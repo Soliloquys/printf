@@ -4,8 +4,9 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-int _putchar(char c);
+int _putchar(char c); // Add a semicolon here
 int _printf(const char *format, ...);
 int handle_specifier(char specifier, va_list list);
 
 #endif
+

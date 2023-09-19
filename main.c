@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * main - Entry point of the program
@@ -7,7 +8,8 @@
  */
 int main(void)
 {
-    printf("Hello, world!\n");
+    char *sum = "Hello World";
+    _printf("%s\n", sum);
     return (0);
 }
 
