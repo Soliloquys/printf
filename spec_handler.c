@@ -14,7 +14,7 @@ int handle_specifier(char specifier, va_list list)
         case 'c':
         {
             char c = va_arg(list, int);
-            putchar(c);
+            _putchar(c);
             return 1; // Return the number of characters printed
         }
 
@@ -26,7 +26,7 @@ int handle_specifier(char specifier, va_list list)
                 int printed_chars = 0;
                 while (*str)
                 {
-                    putchar(*str);
+                    _putchar(*str);
                     str++;
                     printed_chars++;
                 }
@@ -37,8 +37,8 @@ int handle_specifier(char specifier, va_list list)
 
         default:
             // Unsupported format specifier, just print it as is
-            putchar('%');
-            putchar(specifier);
+            _putchar('%');
+            _putchar(specifier);
             return 2; // Return 2 characters printed
     }
 }
