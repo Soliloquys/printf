@@ -7,6 +7,7 @@
 int _putchar(char c);
 int _printf(const char *format, ...);
 int handle_specifier(char specifier, va_list list);
+int handle_integer(char specifier, va_list list);
 
 #endif
 

@@ -7,13 +7,13 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list list;
+	va_list args;
 	int printed_chars = 0;
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(list, format);
+	va_start(args, format);
 
 	while (*format)
 	{
@@ -34,17 +34,28 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				printed_chars++;
 			}
+			else if (*format == 'c' || *format == 's')
+			{
+				printed_chars += handle_specifier(*format, args);
+			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				printed_chars += handle_integer(*format, args);
+			}
 			else
 			{
-				printed_chars += handle_specifier(*format, list);
+				_putchar('%');
+				_putchar(*format);
+				printed_chars += 2;
 			}
 		}
 
 		format++;
 	}
 
-	va_end(list);
+	va_end(args);
 
 	return (printed_chars);
 }
+
 
