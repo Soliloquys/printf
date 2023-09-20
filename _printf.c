@@ -7,36 +7,44 @@
  */
 int _printf(const char *format, ...)
 {
-    va_list list;
-    int printed_chars = 0;
+	va_list list;
+	int printed_chars = 0;
 
-    if (format == NULL)
-        return (-1);
+	if (format == NULL)
+		return (-1);
 
-    va_start(list, format);
+	va_start(list, format);
 
-    while (*format)
-    {
-        if (*format != '%')
-        {
-            _putchar(*format);
-            printed_chars++;
-        }
-        else
-        {
-            format++;
-            if (*format == '\0')
-                break;
+	while (*format)
+	{
+		if (*format != '%')
+		{
+			_putchar(*format);
+			printed_chars++;
+		}
+		else
+		{
+			format++;
+			if (*format == '\0')
+				break;
 
-            printed_chars += handle_specifier(*format, list);
-        }
+			if (*format == '%')
+			{
+				/* Handle "%%" case */
+				_putchar('%');
+				printed_chars++;
+			}
+			else
+			{
+				printed_chars += handle_specifier(*format, list);
+			}
+		}
 
-        format++;
-    }
+		format++;
+	}
 
-    va_end(list);
+	va_end(list);
 
-    return (printed_chars);
+	return (printed_chars);
 }
-
 
