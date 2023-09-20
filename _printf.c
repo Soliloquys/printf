@@ -7,11 +7,11 @@
  */
 int _printf(const char *format, ...)
 {
-    if (format == NULL)
-        return (-1);
-
     va_list list;
     int printed_chars = 0;
+
+    if (format == NULL)
+        return (-1);
 
     va_start(list, format);
 
@@ -26,16 +26,17 @@ int _printf(const char *format, ...)
         {
             format++;
             if (*format == '\0')
-                break; // End of string, exit loop
+                break;
 
-            printed_chars += handle_specifier(*format, list); // Use the function from the external file
+            printed_chars += handle_specifier(*format, list);
         }
 
-        format++; // Move to the next character in the format string
+        format++;
     }
 
     va_end(list);
 
     return (printed_chars);
 }
+
 

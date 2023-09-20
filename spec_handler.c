@@ -9,13 +9,14 @@
  */
 int handle_specifier(char specifier, va_list list)
 {
+    int printed_chars = 0;
     switch (specifier)
     {
         case 'c':
         {
             char c = va_arg(list, int);
             _putchar(c);
-            return 1; // Return the number of characters printed
+            return 1;
         }
 
         case 's':
@@ -23,23 +24,21 @@ int handle_specifier(char specifier, va_list list)
             char *str = va_arg(list, char *);
             if (str != NULL)
             {
-                int printed_chars = 0;
                 while (*str)
                 {
                     _putchar(*str);
                     str++;
                     printed_chars++;
                 }
-                return printed_chars; // Return the number of characters printed
+                return printed_chars;
             }
-            return 0; // Return 0 if the string is NULL;
+            return 0;
         }
 
-        default:
-            // Unsupported format specifier, just print it as is
+	default:
             _putchar('%');
             _putchar(specifier);
-            return 2; // Return 2 characters printed
+            return 2;
     }
 }
 
